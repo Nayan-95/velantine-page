@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Betu 💕</title>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #ff6b9d 0%, #ffc1cc 50%, #ff85a2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Floating hearts background */
+        .heart-bg {
+            position: fixed;
+            font-size: 30px;
+            opacity: 0.15;
+            animation: float 8s infinite ease-in-out;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(5deg); }
+        }
+
+        .container {
+            text-align: center;
+            background: white;
+            padding: 50px 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(255, 107, 157, 0.4);
+            max-width: 500px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            color: #ff1744;
+            font-size: 42px;
+            margin-bottom: 10px;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            10% { transform: scale(1.1); }
+            20% { transform: scale(1); }
+        }
+
+        .dear-name {
+            font-size: 24px;
+            color: #ff4081;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .message {
+            font-size: 18px;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .question {
+            font-size: 28px;
+            color: #ff1744;
+            margin: 30px 0;
+            font-weight: 600;
+        }
+
+        .buttons-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+            position: relative;
+            min-height: 60px;
+        }
+
+        button {
+            font-family: 'Quicksand', sans-serif;
+            font-size: 20px;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .yes-btn {
+            background: linear-gradient(135deg, #ff1744, #ff5252);
+            color: white;
+        }
+
+        .yes-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(255, 23, 68, 0.5);
+        }
+
+        .no-btn {
+            background: linear-gradient(135deg, #ff6b9d, #ffc1cc);
+            color: white;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: wiggle 0.5s ease-in-out infinite;
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: translateX(-50%) rotate(0deg); }
+            25% { transform: translateX(-50%) rotate(-5deg); }
+            75% { transform: translateX(-50%) rotate(5deg); }
+        }
+
+        .success-message {
+            animation: fadeInScale 0.6s ease-out;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .success-message h2 {
+            font-family: 'Pacifico', cursive;
+            color: #ff1744;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .success-message p {
+            font-size: 20px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .heart-icon {
+            font-size: 80px;
+            margin: 20px 0;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .couple-photo {
+            width: 100%;
+            max-width: 350px;
+            border-radius: 20px;
+            margin: 25px auto;
+            box-shadow: 0 10px 30px rgba(255, 23, 68, 0.3);
+            border: 5px solid #fff;
+            outline: 3px solid #ff4081;
+            animation: photoAppear 0.8s ease-out 0.3s backwards;
+        }
+
+        @keyframes photoAppear {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .photo-caption {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.8;
+            margin-top: 25px;
+            text-align: left;
+            font-style: italic;
+        }
+
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: #ff1744;
+            position: fixed;
+            animation: confetti-fall 3s linear forwards;
+            z-index: 1000;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating hearts background -->
+    <div class="heart-bg" style="top: 10%; left: 10%;">❤️</div>
+    <div class="heart-bg" style="top: 20%; right: 15%; animation-delay: 1s;">💕</div>
+    <div class="heart-bg" style="bottom: 15%; left: 20%; animation-delay: 2s;">💖</div>
+    <div class="heart-bg" style="bottom: 25%; right: 10%; animation-delay: 1.5s;">💗</div>
+    <div class="heart-bg" style="top: 50%; left: 5%; animation-delay: 0.5s;">❤️</div>
+    <div class="heart-bg" style="top: 60%; right: 8%; animation-delay: 2.5s;">💕</div>
+
+    <div class="container">
+        <div id="question-screen">
+            <h1>Happy Valentine's Day! 💕</h1>
+            <div class="dear-name">Dear Betu (Pooja)</div>
+            
+            <div class="message">
+                You know what Betu, you are priceless to me. I know this long distance is hard sometimes, but very soon this distance will end and we will be togather forever. I can't wait for that day when I can hold you close and never let go.
+                <br><br>
+                You are my everything, and I am so lucky to having you in my life. ❤️
+            </div>
+
+            <div class="question">
+                Will you be my Valentine? 🌹
+            </div>
+
+            <div class="buttons-container">
+                <button class="yes-btn" onclick="sayYes()">Yes! 💕</button>
+                <button class="no-btn" id="noBtn" onmouseover="moveButton()" ontouchstart="moveButton(event)" onclick="moveButton()">No 😏</button>
+            </div>
+        </div>
+
+        <div id="success-screen" class="hidden success-message">
+            <h2>I knew it! ❤️</h2>
+            <div class="heart-icon">💝</div>
+            <p>
+                Here is my heart for you, Betu, cause you will be the best place for my heart to be in. 
+                <br><br>
+                Forever yours 💕✨
+            </p>
+
+            <img src="couple-photo.jpg" alt="Us Together" class="couple-photo">
+
+            <div class="photo-caption">
+                The way I look at you, it might be obv that I am admiring your beauty... yes I do, but mostly I was admiring my choice - the best thing I could ever have, a bond with you. I was admiring and making myself belife that this preety peice of god's creation belongs to me. 
+                <br><br>
+                Sometimes doubt that do I even deserve her, sometime sadness that she dont deserve my love, always ups and downs hahaha 😅... but most of the time admiring the individual who will be called as my wife, called as my childrens mom, called as my last breath partner.
+                <br><br>
+                It will be so tough leaving this body at the age of 80 if there will be a regreat that "Did I lived it fully?"... but I am sure, if you will be with me, the regreat at that point will be 0 for sure.
+                <br><br>
+                Wishing long long age to our relationship. 💕
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function moveButton(event) {
+            if (event) {
+                event.preventDefault(); // Prevent default touch behavior
+            }
+            
+            const noBtn = document.getElementById('noBtn');
+            const container = document.querySelector('.buttons-container');
+            
+            // Get container dimensions
+            const containerRect = container.getBoundingClientRect();
+            const btnRect = noBtn.getBoundingClientRect();
+            
+            // Calculate random position within a safe range
+            const maxX = containerRect.width - btnRect.width;
+            const maxY = 100; // Allow vertical movement
+            
+            const randomX = Math.random() * maxX - (maxX / 2);
+            const randomY = (Math.random() * maxY) - 50;
+            
+            noBtn.style.left = `calc(50% + ${randomX}px)`;
+            noBtn.style.top = `${randomY}px`;
+            noBtn.style.transition = 'all 0.3s ease-out';
+        }
+
+        function sayYes() {
+            document.getElementById('question-screen').classList.add('hidden');
+            document.getElementById('success-screen').classList.remove('hidden');
+            
+            // Create confetti
+            createConfetti();
+        }
+
+        function createConfetti() {
+            const colors = ['#ff1744', '#ff4081', '#ff6b9d', '#ffc1cc', '#ff5252', '#f50057'];
+            
+            for (let i = 0; i < 150; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDelay = Math.random() * 0.5 + 's';
+                    confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+                    
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 3000);
+                }, i * 20);
+            }
+        }
+    </script>
+</body>
+</html>
